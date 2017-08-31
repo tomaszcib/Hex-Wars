@@ -44,7 +44,7 @@ Sound::Sound(){
     c_str2 = ba.data();
     mAir = Mix_LoadMUS(c_str2);
 
-    ba = (str1 + "/air4.ogg").toLatin1();
+    ba = (str1 + "/inh2o.ogg").toLatin1();
     c_str2 = ba.data();
     mNaval = Mix_LoadMUS(c_str2);
 
