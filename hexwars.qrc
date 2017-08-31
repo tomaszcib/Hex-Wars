@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/icons.png</file>
+        <file>images/digits.png</file>
+        <file>images/HexWarsIcon.png</file>
+        <file>images/textureHex.png</file>
+        <file>images/units.png</file>
+    </qresource>
+</RCC>
