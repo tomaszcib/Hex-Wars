@@ -249,7 +249,8 @@ void MainWind::spawnStartingPos(){
     for(int i = 0; i < 6; i++){
         do{
             startCity = R.rand() % city.size();
-        } while(hexagon[city[startCity].pos].vis == 255);
+        } while(hexagon[city[startCity].pos].vis == 255
+                || city[startCity].owner != 6);
         hexagon[city[startCity].pos].vis = 255;
         if(player[i].isActive){
             captureCity(startCity, i);
