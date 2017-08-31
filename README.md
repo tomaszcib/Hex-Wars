@@ -3,6 +3,9 @@
 
 Hex Wars is a turn-based strategy game for 2 to 6 human or computer players where the object is to capture all your enemies' cities and shatter their forces. One must use various types of units, explore the world and discover new lands to achieve this goal, whilst procedural random world generator makes each game more in-depth and challenging.
 
+## Downloading the game
+See [release](https://github.com/tomaszcib/Hex-Wars/releases) directory for binaries and other download files.
+
 ## Building from source
 The repo contains all the needed source, together with `.pro` project file. __Note:__ `SDL` and `SDL_mixer` libraries are required if you want to use audio within the game. Make sure if you have them installed.
 
