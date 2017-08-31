@@ -191,7 +191,7 @@ void MainWind::createMenus(){
 /* Load program options from 'hexwars.dat' file */
 void MainWind::loadOptions(){
     u_int8_t opt;
-    QFile file("./hexwars.dat");
+    QFile file(QCoreApplication::applicationDirPath() + "/hexwars.dat");
     LOG(INFO, str.log[24]);
     if(file.open(QIODevice::ReadOnly)){
         QDataStream in(&file);

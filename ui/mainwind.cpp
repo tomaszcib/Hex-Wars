@@ -37,6 +37,7 @@ MainWind::MainWind(){
     Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 4096);
     Mix_VolumeMusic(32);
 
+
     /* Game version */
     GAME_VERSION = 1;
     LOG(INFO, str.log[0]);
@@ -268,7 +269,7 @@ void MainWind::createMainWindTitle(){
 
 /* Exit game - ask a user if he/she wants to quit */
 void MainWind::closeEvent(QCloseEvent *event){
-    QFile file("./hexwars.dat");
+    QFile file(QCoreApplication::applicationDirPath() + "/hexwars.dat");
     ingameQuestion.setWindowTitle(str.string[119]);
     ingameQuestion.setText(str.string[120]);
     if(ingameQuestion.exec() == QMessageBox::Yes){

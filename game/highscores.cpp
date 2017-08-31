@@ -36,7 +36,7 @@ void MainWind::highScoreLoad(){
     quint8 size;
     quint8 t8[4];   //8-bit buffer
     quint32 t32[3]; //32-bit buffer
-    QFile file("./scores.dat");
+    QFile file(QCoreApplication::applicationDirPath() + "/scores.dat");
     clearScores();
     LOG(INFO, str.log[1]);
     check:
@@ -81,7 +81,7 @@ void MainWind::highScoreLoad(){
 
 /* Check if player 'a' qualify to be placed in the high score table */
 void MainWind::highScoreSave(u_int8_t a){
-    QFile file("./scores.dat");
+    QFile file(QCoreApplication::applicationDirPath() + "/scores.dat");
     bool ok;
     HighScoreItem newscore;
     unsigned int score = player[a].scoreKilled / 3 + player[a].scoreProduced / 10;

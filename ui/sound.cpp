@@ -29,20 +29,51 @@
  * *************************************************************************/
 
 #include "sound.h"
+#include <QCoreApplication>
+#include <QString>
+#include <QByteArray>
 
 Sound::Sound(){
-    mLand = Mix_LoadMUS("./audio/foot3.ogg");
-    mAir = Mix_LoadMUS("./audio/air4.ogg");
-    mNaval = Mix_LoadMUS("./audio/inh2o.ogg");
-    attack[0] = Mix_LoadMUS("./audio/MgBar1.ogg");
+    QString str1 = QCoreApplication::applicationDirPath() + "/audio/";
+
+    QByteArray ba = (str1 + "/foot3.ogg").toLatin1();
+    const char *c_str2 = ba.data();
+    mLand = Mix_LoadMUS(c_str2);
+
+    ba = (str1 + "/air4.ogg").toLatin1();
+    c_str2 = ba.data();
+    mAir = Mix_LoadMUS(c_str2);
+
+    ba = (str1 + "/air4.ogg").toLatin1();
+    c_str2 = ba.data();
+    mNaval = Mix_LoadMUS(c_str2);
+
+    ba = (str1 + "/MgBar1.ogg").toLatin1();
+    c_str2 = ba.data();
+    attack[0] = Mix_LoadMUS(c_str2);
     attack[1] = NULL;
-    attack[2] = Mix_LoadMUS("./audio/MgBar2.ogg");
+
+    ba = (str1 + "/MgBar2.ogg").toLatin1();
+    c_str2 = ba.data();
+    attack[2] = Mix_LoadMUS(c_str2);
     attack[3] = NULL;
     attack[4] = NULL;
-    attack[5] = Mix_LoadMUS("./audio/MedCan.ogg");
-    attack[6] = Mix_LoadMUS("./audio/LrgCan.ogg");
-    attack[7] = Mix_LoadMUS("./audio/MedCan.ogg");
-    attack[8] = Mix_LoadMUS("./audio/MedCan.ogg");
-    destroy = Mix_LoadMUS("./audio/SmlExpl.ogg");
-    capture = Mix_LoadMUS("./audio/wall01.ogg");
+
+    ba = (str1 + "/LrgCan.ogg").toLatin1();
+    c_str2 = ba.data();
+    attack[6] = Mix_LoadMUS(c_str2);
+
+    ba = (str1 + "/MedCan.ogg").toLatin1();
+    c_str2 = ba.data();
+    attack[5] = Mix_LoadMUS(c_str2);
+    attack[7] = Mix_LoadMUS(c_str2);
+    attack[8] = Mix_LoadMUS(c_str2);
+
+    ba = (str1 + "/SmlExpl.ogg").toLatin1();
+    c_str2 = ba.data();
+    destroy = Mix_LoadMUS(c_str2);
+
+    ba = (str1 + "/wall01.ogg").toLatin1();
+    c_str2 = ba.data();
+    capture = Mix_LoadMUS(c_str2);
 }
