@@ -121,7 +121,7 @@ void MainWind::updateSelection(){
 
 void MainWind::updateNowPlaying(){
     dockImage[1]->setPixmap(QPixmap::fromImage(unitImage[63 + curPlayer]));
-    titleDock[1]->setText(str.string[16]);
+    titleDock[1]->setText("<b>" + str.string[16] + "</b>");
     if(lastHumanPlayer == 7) unitData[0]->setText("(" + str.string[71] + ")");
     else unitData[0]->setText("(" + str.string[player[curPlayer].level + 40] + ")");
     unitData[1]->setText("");
