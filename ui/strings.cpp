@@ -50,7 +50,7 @@ Strings::Strings(){
     string[14] = " in ";
     string[15] = " turn(s)";
 
-    string[16] = "<b>Now playing...</b>";
+    string[16] = "Now playing...";
 
     string[17] = "Tank";
     string[18] = "Paras";
