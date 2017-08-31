@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body { font: normal 12px Arial, sans-serif;}
+h2:after{
+  content:' ';
+  display:block;
+  border:1px solid #aaa;
+}
+h1{ 
+  font: bold red 18px Arial, sans-serif;
+  text-align: center;
+  color: red;
+ }
+h4{
+  font: bold 12px Arial, sans-serif;
+  text-align: center;
+  color: red;
+  line-height: 0px;
+}
+a:link{color: blue;}
+a:visited{color: blue;}
+a:hover{color: #0080ff;}
+a:active{color: #0080ff;}
+</style>
+<title>Hex Wars - Game Manual</title>
+</head>
+<body>
+<h1 id = "begin"></h1>
+<h1>Hex Wars</h1>
+<h4>&copy;&nbsp;Tomasz Ciborski 2017</h4>
+<h4>http://www-users.mat.umk.pl/~tomaszcib/</h4>
+<h4>ciborski.t[at]gmail.com</h4>
+<br>
+<b>Hex Wars</b> is a strategy game of exploration, expansion and world conquest for 2 to 6 human or computer players. The goal of the game is to capture all your enemies' cities and destroy their units.
+<table>
+<tr><td>
+<h3>Table of contents</h3>
+</td>
+</tr>
+<td>
+<ol>
+<li><a href = "#S1">Starting a game</a>
+<li><a href = "#S2">Interface</a>
+<li><a href = "#S3">Map</a>
+<li><a href = "#S4">Unit management</a>
+<li><a href = "#S5">Cities and production</a>
+<li><a href = "#S6">Saving and exiting</a>
+<li><a href = "#S7">Tools, options</a>
+<li><a href = "#S8">Winning the game, high scores</a>
+<li><a href = "#S9">Units</a>
+<li><a href = "#S10">Credits and licensing</a>
+</ol>
+</td></tr>
+</table>
+<h2 id = "S1">1. Starting a game</h2>
+[<a href = "#begin">top</a>]<br><br>
+To start a game, click on the <b>File</b> menu. You can then click on either:
+<ul>
+<li><b>New game</b> - start a new game.
+<li><b>Load game</b> - load a previously saved game.
+</ul>
+While in <b>New game</b> window, you can set following options:
+<ul>
+<li><b>Seed</b> - the same seed will always produce the same world map.
+<li><b>World size</b>
+<li><b>Amount of land</b>
+<li><b>Player positions</b> - set if player starting cities are picked randomly or in a fixed way for the same map parameters.
+<li><b>Players</b> - choose whether the players are out of game or human or computer controlled. There are three levels of difficulty for computer players. Hard AI will produce pieces at 150% the normal speed, while Easy AI - at 50% the normal speed. Medium AI and human players produce pieces at the normal speed.
+<li><b>Rules</b> - if you're familiar enough with the gameplay and rules, you can tweak parameters of selected or all units from the game and create your own ruleset of the gameplay.
+</ul>
+
+<h2 id = "S2">2. Interface</h2>
+[<a href = "#begin">top</a>]<br><br>
+<img src = "./img/interface.png"><br><br>
+<ol>
+<li><b>Map</b> - a visual representation of the game. To drag the view and move the camera across the world, press and hold right mouse button while moving the cursor around.
+<li><b>Minimap</b> - an overview of the world, provides you with information on terrain and approximate control zones of players. The white crosshair denotes current position of camera.
+<li><b>Selection</b> - a panel which contain details of a currently selected unit (health points (HP), move points (MP) and fuel).
+<li><b>Action buttons</b> - left-to-right, top-to-bottom:
+<ul>
+<li><b>Previous unit, Next unit</b> - switch between units standing on the same hex.
+<li><b>Deselect unit</b> - remove selection from the unit.
+<li><b>Land paratroopers</b> - drop Paras on current hex.
+<li><b>Focus on unit</b> - center the view on a selected unit.
+<li><b>Disband unit</b> - destroy the unit. Destroying Transport or Carrier will result in disbanding all their cargo as well.
+<li><b>Inspect city</b> - if a unit stands on a city, this button prompts up city production window.
+<li><b>End turn</b> - once you are done moving, hit that button to end your turn.
+</ul>
+<li><b>Cities controlled</b> - a chart illustrating how many cities are under control of players in the game.
+</ol>
+
+<h2 id = "S3">3. Map</h2>
+[<a href = "#begin">top</a>]<br><br>
+<h3>Terrain</h3>
+<table cellpadding="5">
+<col width="64">
+<col width="90">
+<tr>
+<td><b>Image</b></td>
+<td><b>Not in vision</b></td>
+<td><b>Name</b>
+<td><b>Accessible to</b></td>
+<td><b>Additional info</b></td>
+</tr>
+<tr>
+<td><img src = "./img/terrLand.png"></td>
+<td><img src = "./img/terrInLand.png"></td>
+<td>Land</td>
+<td>Tank, Paras, Fighter, Bomber</td>
+<td>Can contain cities</td>
+</tr>
+<tr>
+<td><img src = "./img/terrWat.png"></td>
+<td><img src = "./img/terrInWat.png"></td>
+<td>Water</td>
+<td>Any, except Tank</td>
+<td>If contiguous to land or mountains, contains coast line</td>
+</tr>
+<td><img src = "./img/terrMount.png"></td>
+<td><img src = "./img/terrInMount.png"></td>
+<td>Mountains</td>
+<td>Paras, Fighter, Bomber</td>
+<td>-</td>
+</tr>
+<td><img src = "./img/terrUndcv.png"></td>
+<td></td>
+<td>Undiscovered</td>
+<td>-</td>
+<td>Neither enemy units nor terrain are visible to the player.<br>Once discovered, will never become undiscovered again until end of the game</td>
+</td>
+</tr>
+</table>
+If a hex is not in player's vision, enemy units are not seen by the player.
+
+<h3>Map objects</h3>
+<table>
+<tr>
+<td><b>Icon</b></td>
+<td><b>Description</b></td>
+</tr>
+<tr>
+<td><img border="1" src = "./img/objCity.png">&nbsp;&nbsp;<img border="1" src = "./img/objCityUn.png"></td>
+<td>
+<ul>
+<li><b>First:</b> a city owned by a player (Red in this case).
+<li><b>Second:</b> a city owned by a plyaer with one unit defending. Note that the player cannot see if there are units defending cities belonging to an enemy.
+</ul></td>
+</tr>
+<tr>
+<td><img border="1" src = "./img/objCityNeut.png"></td>
+<td><ul><li>A neutral city.</ul></td>
+</tr>
+<tr>
+<td><img border="1" src = "./img/objUnFr.png">&nbsp;&nbsp;<img border = "1" src = "./img/objUnFrCargo.png"></td>
+<td>
+<ul>
+<li><b>First:</b> a friendly unit with HP bar below.
+<li><b>Second:</b> a friendly unit carrying one additional unit aboard.
+<li>Note that the player cannot see cargo size and HP bars of units belonging to an enemy.
+</ul>
+</td></tr>
+</table>
+
+<h2 id = "S4">4. Unit management</h2>
+[<a href = "#begin">top</a>]<br><br>
+To select your piece, left-click on it. It will be highlighted on the map and you will see its details in the <b>Selection</b> panel from the side dock.<br><br>
+
+To move the unit, right-click on any other hexagon on the map. The unit will move immediately, unless it is not possible to reach the destination. If you right-click on an enemy unit<br><br>
+
+To deselect the unit, simply left-click on an empty hex, or hit the <b>X</b> button from the side dock.<br><br>
+
+As a general rule, multiple units cannot be stacked on a single hex. The exceptions are:
+<ul>
+<li>friendly cities, which can stack up up to 6 Tanks, Paras, Fighters or Bombers,
+<li>friendly Transports, which can carry up to 6 Tanks,
+<li>friendly Carriers, which can carry up to 6 Fighters.
+</ul>
+You can switch between units using <b><<</b> and <b>>></b> buttons from the side dock.<br><br>
+
+<h3>Special rules</h3>
+There are special rules for certain types of units:
+<ul>
+<li>Paras can be dropped onto a free land hex and become a Tank. The player may perform this action by triggering the <b>Land paratroopers</b> button from the side bar.
+<li>Airborne units (Paras, Fighters, Bombers) have a limited number of fuel points. Everytime, when an airborne unit finishes a movement outside a city (or a Carrier, in case of Fighters), the fuel point number drops by one. When there are no more fuel points left, the unit crashes. Paras over land hexes will drop down and become Tanks. When a unit stays in a city (or a Carrier), its fuel will be replenished by the next turn.
+<li>As naval units become damaged, their maximum MPs will reduce. Ships will steadily regain their HP if placed on a hex contiguous to a  friendly city.
+</ul>
+
+<h2 id = "S5">5. Cities and production</h2>
+[<a href = "#begin">top</a>]<br><br>
+At the beginning of the game, every player controls exactly one city. The remaining cities are neutral and do not belong to anyone.<br><br>
+The player can use his/her cities to produce units. City production can be set either by clicking on a city on the map (if the city does not have defending units) or on <b>Inspect city</b> button from the side dock. This will prompt up a dialog window where you can choose a desired piece.<br><br>
+To capture an enemy or neutral city, one must move a tank unit into the city hex. If the enemy has defending units in the city, they must be destroyed first.
+
+<h2 id = "S6">6. Saving and exiting</h2>
+[<a href = "#begin">top</a>]<br><br>
+You can save your game at any time by clicking on <b>File</b> and then <b>Save game</b>.<br><br>
+To exit the game, select <b>Exit</b> from <b>File</b> menu or simply close the main window.
+<h2 id = "S7"> 7. Tools, options</h2>
+[<a href = "#begin">top</a>]<br><br>
+There are following positions in the <b>Tools</b> menu:
+<ul>
+<li><b>Surrender</b> - withdraw yourself from the game.
+<li><b>Go to hex</b> - point the view at selected row and column.
+<li><b>Game rankings</b> - shows an information window on current game's overall score, owned cities and units ranking.
+<li><b>High scores</b> - shows a window with up to ten best achieved scores.
+<li><b>Program log</b> - shows a window containing program's log. The game's log is an archive of events triggered by the user or the program, followed by time and type of an event (either in-game message, program information, warning or critical error).
+The game's log is also printed out simultaneously into the stdout stream, if the program is run through shell (Unix-like systems) or cmd (Windows).
+</ul>
+In the <b>Options</b> menu, there are:
+<ul>
+<li><b>In-game sounds</b> - check to enable sounds on various in-game events (units movement, combat, etc.).
+<li><b>Show grid</b> - check to show grid between hexes.
+<li><b>Prompt on human</b> - check if a notification window should pop-up before every human player's turn.
+</ul>
+<h2 id = "S8">8. Winning the game, high scores</h2>
+[<a href = "#begin">top</a>]<br><br>
+To win a game, one has to defeat all the other players - both capture their cities and destroy their units. Capturing all the cities on a map is not a must. <br><br>
+A score of a player is calculated based upon an equation:<br>
+<i> Score = (enemy units killed / 3) + (units produced / 10) </i><br>
+If a player scored well enough, he/she will qualify into the <b>High scores</b> ranking and a proper information will pop up on a screen.
+<h2 id = "S9">9. Units</h2>
+[<a href = "#begin">top</a>]<br><br>
+<h3>Tank</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit0.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>4</td></tr>
+<tr><td><b>Moves</b></td><td>1</td></tr>
+<tr><td><b>Fuel</b></td><td>-</td></td></tr>
+<tr><td><b>Vision</b></td><td>1</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>The most common unit in the game.
+<li>Great for defending cities.
+<li>The only unit capable of capturing enemy or neutral cities.
+<li>Can be carried by a Transport.
+<li>Vulnerable to battleships.
+</ul>
+</td></tr></table>
+<h3>Paras</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit1.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>6</td></tr>
+<tr><td><b>Moves</b></td><td>8</td></tr>
+<tr><td><b>Fuel</b></td><td>2</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>Can be dropped onto land hex and become a Tank.
+<li>Cannot attack other units itself.
+<li>Defenseless, can be easily destroyed by Fighters or Bombers.
+</ul>
+</td></tr></table>
+<h3>Figher</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit2.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>8</td></tr>
+<tr><td><b>Moves</b></td><td>8</td></tr>
+<tr><td><b>Fuel</b></td><td>2</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>A supporting unit, particularily strong against Bombers, Paras and Transports.
+<li>Weak against Battleships and (less) Carriers.
+<li>Can be carried by a Carrier.
+</ul>
+</td></tr></table>
+<h3>Bomber</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit3.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>12</td></tr>
+<tr><td><b>Moves</b></td><td>8</td></tr>
+<tr><td><b>Fuel</b></td><td>4</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>Disasterous in offensive campaigns. While attacking, it will destroy every unit on a target hex and hexes contiguous to the target. This include player's units as well.
+<li>Weak against Fighters and Battleships.
+</ul>
+</td></tr></table>
+<h3>Transport</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit4.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>2</td></tr>
+<tr><td><b>Moves</b></td><td>4</td></tr>
+<tr><td><b>Fuel</b></td><td>-</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>Very short production time, unit good for reconnaissance.
+<li>Can carry up to 6 Tanks.
+<li>Cannot attack other units itself.
+<li>Defenseless, can be easily hunted down by Fighters, Destroyers, Battleships and Submarines.
+</ul>
+</td></tr></table>
+<h3>Destroyer</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit5.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>6</td></tr>
+<tr><td><b>Moves</b></td><td>6</td></tr>
+<tr><td><b>Fuel</b></td><td>-</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>Moderate production time and long moving distance, unit good for assisstance.
+<li>Fairly strong against Submarines, can harm Fighters and easily hunt down Transports.
+<li>Weak against Battleships.
+</ul>
+</td></tr></table>
+<h3>Battleship</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit6.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>12</td></tr>
+<tr><td><b>Moves</b></td><td>4</td></tr>
+<tr><td><b>Fuel</b></td><td>-</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>Heavy armored unit, great for leading naval assaults.
+<li>Strong against land and air units, as well as Transports and Destroyers.
+<li>Weak against Submarines.
+</ul>
+</td></tr></table>
+<h3>Carrier</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit7.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>10</td></tr>
+<tr><td><b>Moves</b></td><td>3</td></tr>
+<tr><td><b>Fuel</b></td><td>-</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>Can carry up to 6 Fighters.
+<li>Relatively slow in motion and weak in attack, can defend itself from Fighters fairly good, though.
+<li>Vulnerable to Submarines.
+</ul>
+</td></tr></table>
+<h3>Submarine</h3>
+<table>
+<col width = "64"><col width = ""><col width = "400">
+<tr>
+<td valign="top"><img border="1" src="./img/unit8.png"></td>
+<td valign="top">
+<table>
+<col width="130">
+<col width="80">
+<tr><td><b>Build time</b></td><td>6</td></tr>
+<tr><td><b>Moves</b></td><td>4</td></tr>
+<tr><td><b>Fuel</b></td><td>-</td></td></tr>
+<tr><td><b>Vision</b></td><td>2</td></tr>
+</table>
+</td>
+<td valign = "top">
+<ul>
+<li>A supporting unit, murderous against Transports, can easily win confrontations with Battleships and Carriers.
+<li>Weak against Destroyers, nearly defenseless against Fighters.
+</ul>
+</td></tr></table>
+
+<h2 id = "S10">10. Credits and licensing</h2>
+[<a href = "#begin">top</a>]<br><br>
+Game designed and written by <i>Tomasz Ciborski</i>.<br>
+Audio files originally by Eidos Entertainment and Frank Condello, licensed under GNU General Public License v2,
+as a content for <a href = "http://freeciv.wikia.com">Freeciv</a>.<br>
+All of the game's assets, code and graphics are licensed under <a href = "license.txt">GNU General Public License v3</a>.<br><br> 
+</body>
+</html>
