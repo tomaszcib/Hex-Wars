@@ -217,7 +217,7 @@ void MainWind::loadOptions(){
             QDataStream out(&file);
             opt = option[0]->isChecked() | (option[1]->isChecked() * 2)
                     | (option[2]->isChecked() * 4);
-            out << (qu_int8)opt;
+            out << (quint8)opt;
             file.close();
         }
     }
