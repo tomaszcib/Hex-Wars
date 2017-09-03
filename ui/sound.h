@@ -36,8 +36,10 @@
 
 #ifndef SOUND_H
 #define SOUND_H
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+/* You can use <SDL2/..> instead of <SDL/..>,
+ * both versions are compatible */
+#include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
 #undef main
 
 class Sound{

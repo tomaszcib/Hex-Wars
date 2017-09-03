@@ -202,7 +202,7 @@ void MainWind::doShowNewGameWindow(){
 /* Recalculate difficulty when user changes players settings
  * in new game window */
 void MainWind::doUpdateDiffLabel(){
-    uint8_t diff = 0, i, humans = 0, players = 0, val;
+    u_int8_t diff = 0, i, humans = 0, players = 0, val;
     for(i = 0; i < 6; i++){
         val = newGameWindow.playerOpt[i]->currentIndex();
         if(val) players++;
@@ -333,7 +333,7 @@ void MainWind::doManual(){
 
 /* Show rankings window for the current game */
 void MainWind::doShowRankings(){
-    uint8_t i, table[6];
+    u_int8_t i, table[6];
 
     /* City ranking */
     createRanking(1, table);

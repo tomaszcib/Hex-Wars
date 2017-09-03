@@ -80,7 +80,7 @@ void MainWind::highScoreLoad(){
 }
 
 /* Check if player 'a' qualify to be placed in the high score table */
-void MainWind::highScoreSave(uint8_t a){
+void MainWind::highScoreSave(u_int8_t a){
     QFile file(QCoreApplication::applicationDirPath() + "/scores.dat");
     bool ok;
     HighScoreItem newscore;

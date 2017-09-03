@@ -195,7 +195,7 @@ void MainWind::createMenus(){
 
 /* Load program options from 'hexwars.dat' file */
 void MainWind::loadOptions(){
-    uint8_t opt;
+    u_int8_t opt;
     QFile file(QCoreApplication::applicationDirPath() + "/hexwars.dat");
     LOG(INFO, str.log[24]);
     if(file.open(QIODevice::ReadOnly)){
@@ -217,7 +217,7 @@ void MainWind::loadOptions(){
             QDataStream out(&file);
             opt = option[0]->isChecked() | (option[1]->isChecked() * 2)
                     | (option[2]->isChecked() * 4);
-            out << (quint8)opt;
+            out << (qu_int8)opt;
             file.close();
         }
     }
