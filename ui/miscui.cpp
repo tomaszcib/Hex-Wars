@@ -109,6 +109,11 @@ void MainWind::createWindows(){
     /* Load/save dialogs */
     fileDialog = new QFileDialog(this);
     fileDialog->setNameFilter(str.string[61]);
+    QDir dir;
+    fileDialog->setDefaultSuffix("sav");
+    if(dir.mkdir(QCoreApplication::applicationDirPath() + "/saves")
+            || dir.exists(QCoreApplication::applicationDirPath() + "/saves"))
+        fileDialog->setDirectory(QCoreApplication::applicationDirPath() + "/saves");
 
     /* Message boxes */
     ingameQuestion.setStandardButtons(QMessageBox::Yes);
@@ -190,7 +195,7 @@ void MainWind::createMenus(){
 
 /* Load program options from 'hexwars.dat' file */
 void MainWind::loadOptions(){
-    u_int8_t opt;
+    uint8_t opt;
     QFile file(QCoreApplication::applicationDirPath() + "/hexwars.dat");
     LOG(INFO, str.log[24]);
     if(file.open(QIODevice::ReadOnly)){

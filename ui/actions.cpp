@@ -202,7 +202,7 @@ void MainWind::doShowNewGameWindow(){
 /* Recalculate difficulty when user changes players settings
  * in new game window */
 void MainWind::doUpdateDiffLabel(){
-    u_int8_t diff = 0, i, humans = 0, players = 0, val;
+    uint8_t diff = 0, i, humans = 0, players = 0, val;
     for(i = 0; i < 6; i++){
         val = newGameWindow.playerOpt[i]->currentIndex();
         if(val) players++;
@@ -333,7 +333,7 @@ void MainWind::doManual(){
 
 /* Show rankings window for the current game */
 void MainWind::doShowRankings(){
-    u_int8_t i, table[6];
+    uint8_t i, table[6];
 
     /* City ranking */
     createRanking(1, table);
@@ -372,15 +372,10 @@ void MainWind::doLoadGame(){
     QList<QString> fileName;
     fileDialog->setFileMode(QFileDialog::ExistingFile);
     fileDialog->setWindowTitle(str.string[55]);
+    fileDialog->setAcceptMode(QFileDialog::AcceptOpen);
     if(fileDialog->exec())
         fileName = fileDialog->selectedFiles();
-    if(fileName.empty()){
-        ingameInfo->setWindowTitle(str.string[73]);
-        ingameInfo->setText(str.string[77]);
-        ingameInfo->setIcon(QMessageBox::Warning);
-        ingameInfo->exec();
-        return;
-    }
+    if(fileName.empty()) return;
     QFile file(fileName[0]);
     if(file.open(QIODevice::ReadOnly)){
         QDataStream in(&file);
@@ -516,15 +511,10 @@ void MainWind::doSaveGame(){
     QList<QString> fileName;
     fileDialog->setFileMode(QFileDialog::AnyFile);
     fileDialog->setWindowTitle(str.string[56]);
+    fileDialog->setAcceptMode(QFileDialog::AcceptSave);
     if(fileDialog->exec())
         fileName = fileDialog->selectedFiles();
-    if(fileName.empty()){
-        ingameInfo->setWindowTitle(str.string[73]);
-        ingameInfo->setText(str.string[77]);
-        ingameInfo->setIcon(QMessageBox::Warning);
-        ingameInfo->exec();
-        return;
-    }
+    if(fileName.empty()) return;
     QFile file(fileName[0]);
     if(file.exists()){
         ingameQuestion.setWindowTitle(str.string[78]);

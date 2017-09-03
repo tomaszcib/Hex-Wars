@@ -91,7 +91,7 @@
 #define GAME 0
 #define INFO 1
 #define WARN 2
-#define ERROR 3
+#define ERR 3
 #define DEBUG 4
 
 /* Macos section */

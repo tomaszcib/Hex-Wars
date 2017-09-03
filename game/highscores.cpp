@@ -42,7 +42,7 @@ void MainWind::highScoreLoad(){
     check:
     if(!file.open(QIODevice::ReadOnly)){
         if(!file.open(QIODevice::WriteOnly) && attempt){
-            LOG(ERROR, str.string[106]);
+            LOG(ERR, str.string[106]);
             ingameInfo->setWindowTitle(str.string[73]);
             ingameInfo->setText(str.string[106] + "'" + qApp->applicationDirPath() + "'.");
             ingameInfo->setIcon(QMessageBox::Warning);
@@ -80,7 +80,7 @@ void MainWind::highScoreLoad(){
 }
 
 /* Check if player 'a' qualify to be placed in the high score table */
-void MainWind::highScoreSave(u_int8_t a){
+void MainWind::highScoreSave(uint8_t a){
     QFile file(QCoreApplication::applicationDirPath() + "/scores.dat");
     bool ok;
     HighScoreItem newscore;
@@ -101,7 +101,7 @@ void MainWind::highScoreSave(u_int8_t a){
                 if(highscore.size() > 10)
                     highscore.pop_back();
                 if(!file.open(QIODevice::WriteOnly)){
-                    LOG(ERROR, str.string[106]);
+                    LOG(ERR, str.string[106]);
                     ingameInfo->setWindowTitle(str.string[73]);
                     ingameInfo->setText(str.string[106] + "'" + qApp->applicationDirPath() + "'.");
                     ingameInfo->setIcon(QMessageBox::Warning);
