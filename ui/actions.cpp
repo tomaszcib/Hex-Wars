@@ -452,6 +452,7 @@ void MainWind::doLoadGame(){
                     in >> t32[0];
                     u.transpReq.where = t32[0];
                 }
+                else u.transpReq.clear();
                 hexagon[i].unit.append(u);
             }
             in >> t8[0] >> t8[1] >> t8[2];
